@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .div-content {
+      position: relative;
+    }
+
+    .div-content:not(:last-child) :after {
+      content: '';
+      position: absolute;
+      left: 1.5rem;
+      top: auto;
+      right: auto;
+      height:0.06rem;
+      width: 90%;
+      background:rgba(172,172,172,1);
+      opacity:0.5;
+    }
+  </style>
+</head>
+<body>
+  <!-- 父容器添加:not(:last-child),是加载了里面的子元素上 -->
+  <div class="div-content">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+  </div>
+</body>
+</html>

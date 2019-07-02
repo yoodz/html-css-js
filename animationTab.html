@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+  不可思议的纯CSS导航栏下划线跟随效果
+  参考链接： https://www.cnblogs.com/coco1s/p/8657192.html
+  
+  借助 ~ 选择符，完成这个艰难的使命，也是这个例子中，最最重要的一环。
+  对于当前 hover 的 li ，其对应伪元素的下划线的定位是 left: 100%，
+  而对于 li:hover ~ li::before，它们的定位是 left: 0
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+      display: flex;
+      position: absolute;
+      list-style: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    li {
+      position: relative;
+      padding: 20px;
+      font-size: 24px;
+      color: #000;
+      line-height: 1;
+      transition: 0.2s all linear;
+      cursor: pointer;
+    }
+
+    li::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 0;
+      height: 100%;
+      border-bottom: 2px solid #000;
+      transition: 0.2s all linear;
+    }
+
+    li:hover::before {
+      width: 100%;
+      top: 0;
+      left: 0;
+      transition-delay: 0.1s;
+      border-bottom-color: #000;
+      z-index: -1;
+    }
+
+    li:hover~li::before {
+      left: 0;
+    }
+
+    li:active {
+      background: #000;
+      color: #fff;
+    }
+
+    .active::before {
+      top: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: 2px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="active">不可思议的CSS</li>
+    <li>导航栏</li>
+    <li>光标小下划线跟随</li>
+    <li>PURE CSS</li>
+    <li>Nav Underline</li>
+  </ul>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $('li').on('click', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+  </script>
+</body>
+
+</html>
