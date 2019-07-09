@@ -17,11 +17,24 @@
 
 <body>
   <div class="main-content">23</div>
+  <li class="father"><span class="therr"></span>微信支付<span class="two"></span><input class="list" name="wx" disabled></li>
+  <li class="father"><span class="one"></span> 支付宝 <input class="list" name="zfb" disabled></li>
   <script>
     $('.main-content').css("color", "red");
-    console.log($('.main-content'))
-    $('.main-content').click(function (){
-      $(this).hide()
+    console.log($('div'))
+    $("div").css("border", "2px solid red")
+        .add("p")
+        .css("background", "yellow");
+    $('div').add('<p id="new">new paragraph</p>').addClass("widget").appendTo($('div'))
+    // $('.main-content').click(function (){
+    //   $(this).hide()
+    // })
+
+    $(document).ready(function(){
+      console.log('ready');
+      console.log($('.father')[0]);
+      
+      $('.father')[0].children("input.list").addClass("ones").parent().siblings().find("input.list").removeClass("ones")
     })
   </script>
 </body>

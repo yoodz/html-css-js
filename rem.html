@@ -17,5 +17,15 @@
 </head>
 <body>
   <div class="first">first content</div>
+  <script>
+  // alert(localStorage.getItem('key'))
+  localStorage.setItem("key", 'zfb')
+  let getPayType = localStorage.getItem('key')
+  if (getPayType === 'wx') {
+    console.log('wx')
+  } else if (getPayType === 'zfb') {
+    console.log('zfb')
+  }
+  </script>
 </body>
 </html>
