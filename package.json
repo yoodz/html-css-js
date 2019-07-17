@@ -1,0 +1,23 @@
+{
+  "name": "html",
+  "version": "1.0.0",
+  "description": "Some small features\r 测试一些html，css，js功能点",
+  "main": "copy.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "push": "git add . && git commit -m \" tmp\"  && git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoodz/html-css-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yoodz/html-css-js/issues"
+  },
+  "homepage": "https://github.com/yoodz/html-css-js#readme"
+}
