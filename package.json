@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node scripts/test.js --env=jsdom --commit=helloword",
+    "test": "node scripts/test.js",
     "push": "git add . && git commit -m \" tmp\"  && git push"
   },
   "repository": {

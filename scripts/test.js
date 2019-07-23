@@ -18,7 +18,7 @@ try {
     const str3 = execSync('git add .', {encoding: "utf8"})
     console.log(str3)
 
-    const str4 = execSync('git commit -m \'update\'', {encoding: "utf8"})
+    const str4 = execSync('git commit -m update', {encoding: "utf8"})
     console.log(str4)
 
     const str5 = execSync('git push', {encoding: "utf8"})
