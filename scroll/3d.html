@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    perspective: 1px;
+    transform-style: preserve-3d;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .g-container {
+    height: 150%;
+    position: relative;
+  }
+
+  .section-one {
+    transform: translateZ(-1px);
+  }
+
+  .section-two {
+    transform: translateZ(-2px);
+  }
+
+  .section-three {
+    transform: translateZ(-3px);
+  }
+  img {
+    transform: translateZ(-4px);
+    width: 100%;
+    position: absolute;
+    left: 0;
+  }
+
+  .base {
+    display: inline-block;
+  }
+  .g-img1 {
+    background-image: url(https://images.unsplash.com/photo-1440688807730-73e4e2169fb8?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=);
+    background-size: cover;
+    background-position: center center;
+    transform: translateZ(-4px);
+    height: 100vh;
+}
+</style>
+
+<body>
+  <div class="g-container">
+    <div class="base section-one">translateZ(-1)</div>
+    <div class="base section-two">translateZ(-2)</div>
+    <div class="base section-three">translateZ(-3)</div>
+    <div class="g-img1">2</div>
+  </div>
+</body>
+
+</html>

@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node scripts/test.js --env=jsdom --commit=helloword",
     "push": "git add . && git commit -m \" tmp\"  && git push"
   },
   "repository": {
@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/yoodz/html-css-js/issues"
   },
-  "homepage": "https://github.com/yoodz/html-css-js#readme"
+  "homepage": "https://github.com/yoodz/html-css-js#readme",
+  "dependencies": {
+    "log4js": "^4.5.1",
+    "node-notifier": "^5.4.0"
+  }
 }

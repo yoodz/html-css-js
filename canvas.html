@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+<body>
+  <canvas id="canvasId" width="500" height="500"></canvas>
+  <script>
+    const canvas = document.getElementById('canvasId')
+    const ctx = canvas.getContext('2d')
+    // 绘制矩形
+    // ctx.fillStyle = "rgba(0, 0, 200, 0.2)";
+    // ctx.fillRect(10, 10, 150, 100);
+    // ctx.strokeRect(8, 8, 153, 103)
+    // ctx.clearRect(10, 10, 100, 20)
+    // console.log(ctx)
+
+    // 绘制三角形
+    // ctx.beginPath()
+    // ctx.moveTo(75, 50);
+    // ctx.lineTo(100, 75);
+    // ctx.lineTo(100, 25);
+    // ctx.fill()
+
+    // 绘制笑脸
+    // ctx.beginPath()
+    // ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // 绘制
+    // ctx.moveTo(110, 75);
+    // ctx.arc(75, 75, 35, 0, Math.PI, false);   // 口(顺时针)
+    // ctx.moveTo(65, 65);
+    // ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // 左眼
+    // ctx.moveTo(95, 65);
+    // ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // 右眼
+    // ctx.stroke();
+
+    //绘制秒表三角形 使用描边（stroke）则不会闭合路径
+    // ctx.beginPath()
+    // ctx.moveTo(125,125)
+    // ctx.lineTo(125,45)
+    // ctx.lineTo(45,125)
+    // ctx.closePath()
+    // ctx.stroke()
+
+    // ctx.beginPath()
+    // ctx.arc(75, 75, 20, 0, Math.PI * 2)
+    // ctx.stroke()
+
+    // 画方格
+    function draw(x, y) {
+      for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 6; j++) {
+          if (i === x && j === y) {
+            ctx.fillStyle = 'green';
+            ctx.fillRect(i * 25, j * 25, 25, 25)
+            continue;
+          }
+          ctx.strokeRect(i * 25, j * 25, 25, 25)
+        }
+      }
+    }
+
+    function doIt() {
+      let i = 0;
+      let j = 0;
+      const inter = setInterval(() => {
+        draw(j, i)
+        j = j + 1
+        i = j > 6 ? i + 1 : i
+        if (j > 6) {
+          j = 0
+        }
+        if (i > 6) {
+          i = 0
+        }
+        if (i === 5 && j === 6) {
+          clearInterval(inter)
+        }
+        console.log(i, j)
+      }, 500)
+    }
+
+    // doIt()
+
+    function consoleLog(){
+      console.log(new Date().getTime());
+      // window.requestAnimationFrame(consoleLog);
+    }
+    window.requestAnimationFrame(consoleLog);
+  
+    // var lineargradient = ctx.createLinearGradient(0, 0, 0, 130);
+    // lineargradient.addColorStop(0, '#00ABEB');
+    // lineargradient.addColorStop(0.5, '#fff');
+    // lineargradient.addColorStop(0.5, '#26C000');
+    // lineargradient.addColorStop(1, '#fff');
+    // ctx.fillStyle = lineargradient;
+    // ctx.fillRect(10, 10, 130, 130);
+
+    // var raf;
+
+    // var ball = {
+    //   x: 100,
+    //   y: 100,
+    //   vx: 5,
+    //   vy: 2,
+    //   radius: 25,
+    //   color: 'blue',
+    //   draw: function () {
+    //     ctx.beginPath();
+    //     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+    //     ctx.closePath();
+    //     ctx.fillStyle = this.color;
+    //     ctx.fill();
+    //     if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
+    //       ball.vy = -ball.vy;
+    //     }
+    //     if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
+    //       ball.vx = -ball.vx;
+    //     }
+    //   }
+    // };
+
+    // function draw() {
+    //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //   ball.draw();
+    //   ball.x += ball.vx;
+    //   ball.y += ball.vy;
+    //   raf = window.requestAnimationFrame(draw);
+    // }
+
+    // canvas.addEventListener('mouseover', function (e) {
+    //   raf = window.requestAnimationFrame(draw);
+    // });
+
+    // canvas.addEventListener('mouseout', function (e) {
+    //   window.cancelAnimationFrame(raf);
+    // });
+
+    // ball.draw();
+
+    // function clock() {
+    //   var now = new Date();
+    //   // var ctx = document.getElementById('canvasId').getContext('2d');
+    //   ctx.save();
+    //   ctx.clearRect(0, 0, 150, 150);
+    //   ctx.translate(75, 75);
+    //   ctx.scale(0.4, 0.4);
+    //   ctx.rotate(-Math.PI / 2);
+    //   ctx.strokeStyle = "black";
+    //   ctx.fillStyle = "white";
+    //   ctx.lineWidth = 8;
+    //   ctx.lineCap = "round";
+
+    //   // Hour marks
+    //   ctx.save();
+    //   for (var i = 0; i < 12; i++) {
+    //     ctx.beginPath();
+    //     ctx.rotate(Math.PI / 6);
+    //     ctx.moveTo(100, 0);
+    //     ctx.lineTo(120, 0);
+    //     ctx.stroke();
+    //   }
+    //   ctx.restore();
+
+    //   // Minute marks
+    //   ctx.save();
+    //   ctx.lineWidth = 5;
+    //   for (i = 0; i < 60; i++) {
+    //     if (i % 5 != 0) {
+    //       ctx.beginPath();
+    //       ctx.moveTo(117, 0);
+    //       ctx.lineTo(120, 0);
+    //       ctx.stroke();
+    //     }
+    //     ctx.rotate(Math.PI / 30);
+    //   }
+    //   ctx.restore();
+
+    //   var sec = now.getSeconds();
+    //   var min = now.getMinutes();
+    //   var hr = now.getHours();
+    //   hr = hr >= 12 ? hr - 12 : hr;
+
+    //   ctx.fillStyle = "black";
+
+    //   // write Hours
+    //   ctx.save();
+    //   ctx.rotate(hr * (Math.PI / 6) + (Math.PI / 360) * min + (Math.PI / 21600) * sec)
+    //   ctx.lineWidth = 14;
+    //   ctx.beginPath();
+    //   ctx.moveTo(-20, 0);
+    //   ctx.lineTo(80, 0);
+    //   ctx.stroke();
+    //   ctx.restore();
+
+    //   // write Minutes
+    //   ctx.save();
+    //   ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec)
+    //   ctx.lineWidth = 10;
+    //   ctx.beginPath();
+    //   ctx.moveTo(-28, 0);
+    //   ctx.lineTo(112, 0);
+    //   ctx.stroke();
+    //   ctx.restore();
+
+    //   // Write seconds
+    //   ctx.save();
+    //   ctx.rotate(sec * Math.PI / 30);
+    //   ctx.strokeStyle = "#D40000";
+    //   ctx.fillStyle = "#D40000";
+    //   ctx.lineWidth = 6;
+    //   ctx.beginPath();
+    //   ctx.moveTo(-30, 0);
+    //   ctx.lineTo(83, 0);
+    //   ctx.stroke();
+    //   ctx.beginPath();
+    //   ctx.arc(0, 0, 10, 0, Math.PI * 2, true);
+    //   ctx.fill();
+    //   ctx.beginPath();
+    //   ctx.arc(95, 0, 10, 0, Math.PI * 2, true);
+    //   ctx.stroke();
+    //   ctx.fillStyle = "rgba(0,0,0,0)";
+    //   ctx.arc(0, 0, 3, 0, Math.PI * 2, true);
+    //   ctx.fill();
+    //   ctx.restore();
+
+    //   ctx.beginPath();
+    //   ctx.lineWidth = 14;
+    //   ctx.strokeStyle = '#325FA2';
+    //   ctx.arc(0, 0, 142, 0, Math.PI * 2, true);
+    //   ctx.stroke();
+
+    //   ctx.restore();
+
+    //   window.requestAnimationFrame(clock);
+    // }
+
+    // window.requestAnimationFrame(clock);
+
+    // var img = new Image();
+
+    // // User Variables - customize these to change the image being scrolled, its
+    // // direction, and the speed.
+
+    // img.src = 'https://mdn.mozillademos.org/files/4553/Capitan_Meadows,_Yosemite_National_Park.jpg';
+    // var CanvasXSize = 800;
+    // var CanvasYSize = 200;
+    // var speed = 30; //lower is faster
+    // var scale = 1.05;
+    // var y = -4.5; //vertical offset
+
+    // // Main program
+
+    // var dx = 0.75;
+    // var imgW;
+    // var imgH;
+    // var x = 0;
+    // var clearX;
+    // var clearY;
+
+    // img.onload = function () {
+    //   imgW = img.width * scale;
+    //   imgH = img.height * scale;
+    //   if (imgW > CanvasXSize) { x = CanvasXSize - imgW; } // image larger than canvas
+    //   if (imgW > CanvasXSize) { clearX = imgW; } // image larger than canvas
+    //   else { clearX = CanvasXSize; }
+    //   if (imgH > CanvasYSize) { clearY = imgH; } // image larger than canvas
+    //   else { clearY = CanvasYSize; }
+    //   //Get Canvas Element
+    //   // ctx = document.getElementById('canvas').getContext('2d');
+    //   //Set Refresh Rate
+    //   return setInterval(draw, speed);
+    // }
+
+    // function draw() {
+    //   //Clear Canvas
+    //   ctx.clearRect(0, 0, clearX, clearY);
+    //   //If image is <= Canvas Size
+    //   if (imgW <= CanvasXSize) {
+    //     //reset, start from beginning
+    //     if (x > (CanvasXSize)) { x = 0; }
+    //     //draw aditional image
+    //     if (x > (CanvasXSize - imgW)) { ctx.drawImage(img, x - CanvasXSize + 1, y, imgW, imgH); }
+    //   }
+    //   //If image is > Canvas Size
+    //   else {
+    //     //reset, start from beginning
+    //     if (x > (CanvasXSize)) { x = CanvasXSize - imgW; }
+    //     //draw aditional image
+    //     if (x > (CanvasXSize - imgW)) { ctx.drawImage(img, x - imgW + 1, y, imgW, imgH); }
+    //   }
+    //   //draw image
+    //   ctx.drawImage(img, x, y, imgW, imgH);
+    //   //amount to move
+    //   x += dx;
+    // }
+  </script>
+</body>
+
+</html>
