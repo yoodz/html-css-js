@@ -22,7 +22,7 @@
   "homepage": "https://github.com/yoodz/html-css-js#readme",
   "dependencies": {
     "log4js": "^4.5.1",
-    "node-notifier": "^5.4.0",
+    "node-notifier": "^8.0.1",
     "readline-sync": "^1.4.9"
   }
 }
